@@ -26,16 +26,36 @@ export default function Banner() {
   useEffect(() => {
     fetchRandomMovie()
   }, [])
-  
+
+  function truncate(str,n){
+    return str?.length > n ? str.subtr(0,n - 1) + "..." : str;
+  }
 
   return (
     <>
-    <h1>Banner</h1>
     <header className="banner-container" style={{
       backgroundSize: "Cover",
       backgroundImage:`url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
       roundPosition:"center-center"
     }}>
+      <div className="banner-content">
+        <h1 className="banner-title">
+          {movie?.title|| movie?.name ||movie?.original_name }
+        </h1>
+        <div className="banner-button-container">
+          <button className="banner-button">
+            Assistir
+          </button>
+          <button className="banner-button">
+            Minha Lista
+          </button>
+        </div>
+        <div className="banner-description">
+
+          {truncate(movie?.overview)}
+
+        </div>
+      </div>
 
     </header>
     </>
