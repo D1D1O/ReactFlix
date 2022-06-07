@@ -28,7 +28,7 @@ export default function Banner() {
   }, [])
 
   function truncate(str,n){
-    return str?.length > n ? str.subtr(0,n - 1) + "..." : str;
+    return str?.length > n ? str.substr(0,n - 1) + "..." : str;
   }
 
   return (
@@ -52,7 +52,7 @@ export default function Banner() {
         </div>
         <div className="banner-description">
 
-          {truncate(movie?.overview)}
+          {truncate(movie?.overview,150)}
 
         </div>
       </div>
